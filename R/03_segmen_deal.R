@@ -94,12 +94,17 @@ nsim_answ_segment_version <- function(brand = 'JBLH',version='V1'){
 #' nsim_nsdict_version();
 nsim_nsdict_version <- function(brand='JBLH'){
   #获取版本
+  starttime <- Sys.time();
+  print(starttime);
   var_version <- nsim_version_getNextVersion(brand,'nsdict');
   #处理问题分词
   nsim_ques_segment_version(brand,var_version);
   #处理答案分词
   nsim_answ_segment_version(brand,var_version);
   #更新版本
+  endtime <-Sys.time();
+  print(endtime);
+  print(as.character(endtime-starttime));
   nsim_version_setCurrentVersion(brand,'nsdict',var_version);
 
 }
